@@ -23,7 +23,7 @@ class App extends Component {
 
   refreshList = () => {
     axios
-      .get("https://abiolasams.github.io/notes/api/todos/")
+      .get("http://127.0.0.1:8000/api/todos/")
       .then((res) => this.setState({ todoList: res.data }))
       .catch((err) => console.log(err));
   };
@@ -37,18 +37,18 @@ class App extends Component {
 
     if (item.id) {
       axios
-        .put(`https://abiolasams.github.io/notes/api/todos/${item.id}/`, item)
+        .put(`http://127.0.0.1:8000/api/todos/${item.id}/`, item)
         .then((res) => this.refreshList());
       return;
     }
     axios
-      .post("https://abiolasams.github.io/notes/api/todos/", item)
+      .post("http://127.0.0.1:8000/api/todos/", item)
       .then((res) => this.refreshList());
   };
 
   handleDelete = (item) => {
     axios
-      .delete(`https://abiolasams.github.io/notes/api/todos/${item.id}/`)
+      .delete(`http://127.0.0.1:8000/api/todos/${item.id}/`)
       .then((res) => this.refreshList());
   };
 
